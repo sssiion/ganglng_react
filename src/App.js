@@ -19,7 +19,7 @@ function App() {
     }
     setLoading(true);
     try {
-      const response = await axios.get(`http://ganglng-production.up.railway.app/api/recommendations`, {
+      const response = await axios.get(`http://${IP}/api/recommendations`, {
         params: { lat, lon, keyword, time }
       });
       setSearchResults(response.data || []);
