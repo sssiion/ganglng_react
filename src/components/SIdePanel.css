@@ -1,0 +1,106 @@
+/* 사이드 패널 컨테이너 */
+.side-panel {
+  position: fixed; /* 화면에 고정 */
+  top: 0;
+  right: 0;
+  height: 100vh; /* 전체 높이 */
+  width: 380px; /* 패널 너비 */
+  background-color: white;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000; /* 지도보다 위에 오도록 설정 */
+  
+  /* 핵심: 패널을 오른쪽 화면 밖으로 밀어냄 (핸들 너비만큼만 남김) */
+  transform: translateX(calc(100% - 40px));
+  transition: transform 0.3s ease-in-out; /* 부드러운 애니메이션 효과 */
+}
+
+/* 'open' 클래스가 추가되었을 때의 스타일 */
+.side-panel.open {
+  /* 패널을 원래 위치로 이동시켜 화면에 완전히 보이게 함 */
+  transform: translateX(0);
+}
+
+/* 패널을 열고 닫는 화살표 버튼 */
+.toggle-button {
+  position: absolute;
+  left: -40px; /* 패널의 왼쪽에 위치 */
+  top: 50%;
+  transform: translateY(-50%); /* 수직 중앙 정렬 */
+  width: 40px;
+  height: 80px;
+  background-color: #5d9cec;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px 0 0 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* 패널 내부 콘텐츠 영역 */
+.panel-content {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto; /* 내용이 길어지면 스크롤 생성 */
+}
+
+.panel-content h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+/* 결과 목록 (ul) */
+.results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 결과 아이템 (li) */
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.item-details {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.search-button {
+  background-color: #5d9cec;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.search-button:hover {
+  background-color: #4a89dc;
+}
+
+.no-results {
+  color: #888;
+  text-align: center;
+  margin-top: 50px;
+}
