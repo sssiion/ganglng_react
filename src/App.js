@@ -19,7 +19,7 @@ function App() {
     }
     setLoading(true);
     try {
-      const response = await axios.get(`https://192.168.0.5/api/recommendations`, {
+      const response = await axios.get(`https://192.168.0.5:8082/api/recommendations`, {
         params: { lat, lon, keyword, time }
       });
       setSearchResults(response.data || []);
