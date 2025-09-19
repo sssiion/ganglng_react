@@ -2,7 +2,6 @@ import React from 'react';
 import { Map, MapMarker, MapTypeControl, ZoomControl } from 'react-kakao-maps-sdk';
 
 function MapContainer({ center, searchResults }) {
-  const results = Array.isArray(searchResults) ? searchResults : [];
   return (
     <Map
       center={center}
@@ -13,7 +12,7 @@ function MapContainer({ center, searchResults }) {
       <MapMarker position={center} />
 
       {/* API 결과 마커 */}
-      {results.map((item, index) => (
+      {searchResults.map((item, index) => (
         <MapMarker
           key={index}
           position={{ lat: item.latitude, lng: item.longitude }}

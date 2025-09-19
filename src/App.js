@@ -19,19 +19,10 @@ function App() {
     }
     setLoading(true);
     try {
-      const response = await axios.get(`/api/recommendations`, {
+      const response = await axios.get(`https://ganglng2.railway.internal/api/recommendations`, {
         params: { lat, lon, keyword, time }
       });
-        const list = Array.isArray(response.data)
-            ? response.data
-            : Array.isArray(response.data?.results)
-                ? response.data.results
-                : Array.isArray(response.data?.data)
-                    ? response.data.data
-                    : [];
-        setSearchResults(list);
-
-      
+      setSearchResults(response.data || []);
     } catch (error) {
       console.error("API 호출 중 오류 발생!", error);
       setSearchResults([]);
