@@ -19,7 +19,7 @@ function App() {
     }
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:8080/api/recommendations`, {
+      const response = await axios.get(`http://114.70.216.70:8080/api/recommendations`, {
         params: { lat, lon, keyword, time }
       });
       setSearchResults(response.data || []);
