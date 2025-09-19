@@ -22,7 +22,16 @@ function App() {
       const response = await axios.get(`/api/recommendations`, {
         params: { lat, lon, keyword, time }
       });
-      setSearchResults(response.data || []);
+        const list = Array.isArray(response.data)
+            ? response.data
+            : Array.isArray(response.data?.results)
+                ? response.data.results
+                : Array.isArray(response.data?.data)
+                    ? response.data.data
+                    : [];
+        setSearchResults(list);
+
+      
     } catch (error) {
       console.error("API 호출 중 오류 발생!", error);
       setSearchResults([]);
